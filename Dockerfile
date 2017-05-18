@@ -1,11 +1,5 @@
-FROM nginx:1.13
+FROM nginx:1.12
 MAINTAINER Wessel Pieterse <wessel<at>ordercloud<dot>co<dot>za>
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-
-RUN touch /var/run/nginx.pid && \
-  chown -R www-data:www-data /var/run/nginx.pid && \
-  chown -R www-data:www-data /var/cache/nginx
-
-USER  nginx;
+ADD ./nginx.conf /etc/nginx/nginx.conf
+ADD ./default.conf /etc/nginx/conf.d/default.conf
